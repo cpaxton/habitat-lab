@@ -277,7 +277,7 @@ def simulate(sim, dt, get_observations=False):
 def test_fetch_robot_wrapper(fixed_base):
     """Test the fetch robot."""
     # set this to output test results as video for easy investigation
-    produce_debug_video = False
+    produce_debug_video = True
     observations = []
     cfg_settings = default_sim_settings.copy()
     cfg_settings["scene"] = "NONE"
