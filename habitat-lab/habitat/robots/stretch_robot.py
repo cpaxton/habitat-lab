@@ -15,22 +15,22 @@ from habitat.robots.mobile_manipulator import (
 class StretchRobot(MobileManipulator):
     def _get_fetch_params(self):
         return MobileManipulatorParams(
-            arm_joints=list(range(15, 22)),
-            gripper_joints=[23, 24],
-            wheel_joints=[2, 4],
+            arm_joints=list(range(4, 14)),
+            gripper_joints=[, 24],
+            wheel_joints=[0, 1],
             arm_init_params=np.array(
-                [-0.45, -1.08, 0.1, 0.935, -0.001, 1.573, 0.005],
+                [0.2, 0.05, 0.05, 0.05, 0.05, 0.5, 0., 0, 0, 0],
                 dtype=np.float32,
             ),
             gripper_init_params=np.array([0.00, 0.00], dtype=np.float32),
             ee_offset=mn.Vector3(0.08, 0, 0),
-            ee_link=22,
-            ee_constraint=np.array([[0.4, 1.2], [-0.7, 0.7], [0.25, 1.5]]),
+            ee_link=14,
+            # ee_constraint=np.array([[0.4, 1.2], [-0.7, 0.7], [0.25, 1.5]]),
             cameras={
                 "robot_arm": RobotCameraParams(
                     cam_offset_pos=mn.Vector3(0, 0.0, 0.1),
                     cam_look_at_pos=mn.Vector3(0.1, 0.0, 0.0),
-                    attached_link_id=22,
+                    attached_link_id=14,
                     relative_transform=mn.Matrix4.rotation_y(mn.Deg(-90))
                     @ mn.Matrix4.rotation_z(mn.Deg(90)),
                 ),
@@ -56,15 +56,12 @@ class StretchRobot(MobileManipulator):
             wheel_mtr_max_impulse=10.0,
             base_offset=mn.Vector3(0, 0, 0),
             base_link_names={
+                "link_right_wheel",
+                "link_left_wheel",
+                "caster_link",
+                "link_mast",
                 "base_link",
-                "r_wheel_link",
-                "l_wheel_link",
-                "r_wheel_link",
-                "bellows_link",
-                "bellows_link2",
-                "estop_link",
-                "laser_link",
-                "torso_fixed_link",
+                "laser",
             },
         )
 
