@@ -16,7 +16,7 @@ class StretchRobot(MobileManipulator):
     def _get_fetch_params(self):
         return MobileManipulatorParams(
             arm_joints=list(range(4, 14)),
-            gripper_joints=[, 24],
+            gripper_joints=[15, 17],
             wheel_joints=[0, 1],
             arm_init_params=np.array(
                 [0.2, 0.05, 0.05, 0.05, 0.05, 0.5, 0., 0, 0, 0],
@@ -25,7 +25,7 @@ class StretchRobot(MobileManipulator):
             gripper_init_params=np.array([0.00, 0.00], dtype=np.float32),
             ee_offset=mn.Vector3(0.08, 0, 0),
             ee_link=14,
-            # ee_constraint=np.array([[0.4, 1.2], [-0.7, 0.7], [0.25, 1.5]]),
+            ee_constraint=np.array([[0.4, 1.2], [-0.7, 0.7], [0.25, 1.5]]),
             cameras={
                 "robot_arm": RobotCameraParams(
                     cam_offset_pos=mn.Vector3(0, 0.0, 0.1),
